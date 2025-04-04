@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte de visite moderne</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-card {
+      background: #1e1e1e;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #333;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.1); /* Effet lumineux */
+  animation: glow 2s infinite alternate; /* Animation */
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.1);
+  }
+  to {
+    box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
+    .name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 0; /* Supprime la marge inférieure */
+}
+
+    .contact-info {
+      font-size: 1rem;
+      color: #b0b0b0;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info a {
+      color: #b0b0b0;
+      text-decoration: none;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .action-buttons button {
+      background: #2c2c2c;
+      color: #ffffff;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .action-buttons button i {
+      font-size: 1.2rem;
+    }
+
+    .action-buttons button:hover {
+      background: #333333;
+      transform: translateY(-2px);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-icons a {
+      color: #b0b0b0;
+      font-size: 1.5rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+      transform: scale(1.2);
+    }
+
+    .horizontal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .horizontal-buttons button {
+      flex: 1;
+      background: #2c2c2c;
+      color: #ffffff;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .horizontal-buttons button  {
+      font-size: 1.2rem;
+    }
+
+    .horizontal-buttons button:hover {
+      background: #333333;
+      transform: translateY(-2px);
+    }
+    .text {
+  position: relative;
+  top: 50%;
+  width: 100%;
+  margin: 1rem auto 0; 
+  border-right: 2px solid rgba(10, 10, 10, 0.75);
+  font-size: 15px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+  }
+  .typewriter {
+  animation: anime 4s steps(40) 1s 1 normal both,
+  anime2 500ms steps(40) infinite normal;
+  }
+  @keyframes anime {
+  from {width: 0%;}
+  to {width: 85%;}
+  }
+  @keyframes anime2 {
+  from {border-right-color: rgba(139, 131, 131, 0.75);}
+  to {border-right-color: transparent;}
+  }
+/* chatbot */
+/* Styles généraux */
+/* Styles généraux */
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  place-items: center;
+  background: rgb(3, 3, 3);
+}
+
+/* Bouton du robot */
+#robot-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #69bae9c4;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20, 145, 26, 0.3);
+  z-index: 1000;
+  animation: bounce 2s infinite; /* Ajout de l'animation */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Boîte du chatbot */
+/* Boîte du chatbot */
+#chatbox {
+  width: 360px;
+  height: 600px;
+  background-color: #ffffff; /* Fond blanc pour un look professionnel */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  display: none;
+  z-index: 999;
+  border: 1px solid #e0e0e0; /* Bordure légère */
+}
+
+/* Conteneur des messages */
+#messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f9f9f9; /* Fond clair pour les messages */
+}
+
+/* Messages */
+.message {
+  max-width: 80%;
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+  line-height: 1.4;
+  font-size: 14px;
+  display: inline-block;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Messages du bot */
+.bot {
+  background-color: #007bff; /* Bleu professionnel */
+  color: #ffffff;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+}
+
+/* Messages de l'utilisateur */
+.user {
+  background-color: #e9ecef; /* Gris clair */
+  color: #333333;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+}
+
+/* Conteneur de l'entrée utilisateur */
+#input-container {
+  display: flex;
+  border-top: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  border: none;
+  padding: 15px;
+  font-size: 14px;
+  outline: none;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333333;
+}
+
+input[type="text"]::placeholder {
+  color: #999999;
+}
+
+/* Formulaire de contact */
+#contact-form {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+}
+
+#contact-form input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#contact-form button {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Bouton du robot */
+#robot-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+  input[type="text"], #contact-form input, #contact-form button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="profile-card">
+    <img src="1.png" alt="Photo de profil" class="profile-img">
+    <div class="name">Ahmed Chaieb</div>
+    <div class="contact-info">
+        <div class="text typewriter "><strong>Dev Web  & Marketing Digital</strong></div>
+
+   
+    </div>
+    <div class="action-buttons">
+        <button onclick="window.location.href='tel:06-52-80-51-05'"><i class="fas fa-phone"></i> Appeler</button>
+      <button onclick="window.location.href='sms:0652805105?body=Bonjour%20!%20Comment%20ça%20va%20?'"><i class="fas fa-sms"></i>Sms</button>
+        <button onclick="window.location.href='mailto:am2tech@outlook.com?subject=subject text'"><i class="fas fa-envelope"></i> Email</button>
+       
+      </div>
+    <!-- <div class="social-icons">
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+
+
+    </div> -->
+    <div class="horizontal-buttons">
+        <button onclick="saveContact()"><i class="fas fa-download"></i> Sauvegarder</button>
+        <button onclick="shareProfile()"><i class="fas fa-paper-plane"></i> Envoyer</button>
+      </div>
+      <br>
+      <p>Réalisé par Am2.tech</p>
+    </div>
+    
+   
+ 
+<button id="robot-btn" onclick="toggleChat()">🤖</button>
+
+<!-- Chatbot box -->
+<div id="chatbox">
+  <div id="messages">
+    <div class="message bot">👋 Bonjour ! Je suis votre assistant digital. Vous cherchez un site web & carte de visite NFC 💻, de la pub 📢 ou un boost SEO 📈 ?</div>
+  </div>
+
+  <div id="input-container">
+    <input type="text" id="user-input" placeholder="Votre réponse ici...">
+  </div>
+
+  <div id="contact-form">
+    <input type="text" id="name" placeholder="Votre prénom et nom">
+    <input type="email" id="email" placeholder="Votre email">
+    <input type="tel" id="phone" placeholder="Votre numéro de téléphone">
+    <button onclick="sendContact()">Envoyer le formulaire</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  
+    emailjs.init("ypbvFbzVoOE4rtBjK"); // Ta clé publique
+  const messages = document.getElementById('messages');
+  const input = document.getElementById('user-input');
+  const form = document.getElementById('contact-form');
+  const chatbox = document.getElementById('chatbox');
+
+  let step = 0;
+  const userData = {};
+
+  window.toggleChat = function() {
+  if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+    chatbox.style.display = 'flex';
+  } else {
+    chatbox.style.display = 'none';
+  }
+};
+
+
+  const addMessage = (text, sender) => {
+    const msg = document.createElement('div');
+    msg.className = `message ${sender}`;
+    msg.textContent = text;
+    messages.appendChild(msg);
+    messages.scrollTop = messages.scrollHeight;
+  };
+
+  input.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      input.value = '';
+
+      setTimeout(() => {
+        switch (step) {
+          case 0:
+            if (/site|web/i.test(text)) {
+              userData.need = "Site Web & Carte de Visite NFC";
+              addMessage("Super ! Vous souhaitez un site vitrine, e-commerce ou autre ?", 'bot');
+              step = 1;
+            } else if (/pub|ads|facebook|google/i.test(text)) {
+              userData.need = "Publicité";
+              addMessage("Parfait ! Avez-vous déjà une audience ou on part de zéro ?", 'bot');
+              step = 2;
+            } else if (/seo|référencement/i.test(text)) {
+              userData.need = "SEO";
+              addMessage("Souhaitez-vous améliorer un site existant ou partir de zéro ?", 'bot');
+              step = 3;
+            } else {
+              addMessage("Pouvez-vous préciser : Site Web & Carte de Visite NFC 💻, pub 📢 ou SEO 📈 ?", 'bot');
+            }
+            break;
+
+          case 1:
+            userData.siteType = text;
+            addMessage("Top ! Avez-vous déjà un logo ou une charte graphique ?", 'bot');
+            step = 4;
+            break;
+
+          case 2:
+            userData.audience = text;
+            addMessage("Souhaitez-vous qu’on vous crée une stratégie complète avec visuels, ciblage et suivi ?", 'bot');
+            step = 4;
+            break;
+
+          case 3:
+            userData.seoType = text;
+            addMessage("Souhaitez-vous un audit SEO gratuit pour savoir où vous en êtes ?", 'bot');
+            step = 4;
+            break;
+
+          case 4:
+            userData.details = text;
+            addMessage("Merci ! Dernière étape 🙌, laissez-nous vos coordonnées pour qu'on vous contacte :", 'bot');
+            input.style.display = 'none';
+            form.style.display = 'flex';
+            step = 99;
+            break;
+        }
+      }, 400);
+    }
+  });
+
+  function sendContact() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  // Validation des champs
+  if (!name || !email || !phone) {
+    alert("Merci de remplir tous les champs !");
+    return;
+  }
+
+  // Validation du format de l'email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Veuillez entrer une adresse email valide !");
+    return;
+  }
+
+  // Validation du format du téléphone (exemple pour les numéros français)
+  const phoneRegex = /^(\+33|0)[1-9](\d{2}){4}$/;
+  if (!phoneRegex.test(phone)) {
+    alert("Veuillez entrer un numéro de téléphone valide !");
+    return;
+  }
+
+  // Préparer les données pour EmailJS
+  const templateParams = {
+    from_name: name,
+    from_email: email,
+    phone_number: phone,
+    besoin: userData.need || "Non précisé",
+    to_email: "am2tech@outlook.com" // Votre adresse email
+  };
+
+  emailjs.send("service_2v25l7h", "template_9g40fri", templateParams)
+      .then(response => {
+        console.log("✅ Message envoyé :", response);
+        const form = document.getElementById('contact-form');
+        const messages = document.getElementById('messages');
+        const input = document.getElementById('user-input');
+
+        form.style.display = 'none';
+        input.style.display = 'block';
+        messages.innerHTML += `<div class="message bot">✅ Merci ${name} ! Votre message a été envoyé avec succès.</div>`;
+      })
+      .catch(error => {
+        console.error("❌ Erreur d'envoi :", error);
+        alert("Une erreur est survenue. Essayez à nouveau.");
+      });
+  };
+        function shareProfile() {
+          if (navigator.share) {
+            navigator.share({
+              title: 'Ahmed Chaieb – Carte de visite',
+              text: 'Voici mes informations professionnelles.',
+              url: window.location.href
+            }).catch(err => console.warn('Partage annulé ou refusé.', err));
+          } else {
+            const dummy = document.createElement('input');
+            dummy.value = window.location.href;
+            document.body.appendChild(dummy);
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert("Lien copié dans le presse-papiers !");
+          }
+        }
+    
+        function saveContact() {
+          const vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:Chaieb;Ahmed;;;\nFN:Ahmed Chaieb\nTITLE:Consultant Digital\nTEL;TYPE=CELL:0764573986\nEMAIL:amin75024@hotmail.fr\nURL:https://am2tech.fr\nADR:;;Paris;;;;France\nORG:AM2TECH\nNOTE:Passionné par l'innovation numérique\nEND:VCARD`;
+          const blob = new Blob([vCardData], { type: 'text/vcard' });
+          const url = URL.createObjectURL(blob);
+    
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'Ahmed_Chaieb.vcf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
