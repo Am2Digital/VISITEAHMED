@@ -559,7 +559,7 @@ input[type="text"]::placeholder {
         }
     
         function saveContact() {
-          const vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:Am2tech;;;;\nFN:Am2tech\nTITLE:Consultant Digital\nTEL;TYPE=CELL:0652805105\nEMAIL:contact@am2tech.fr.com\nURL:https://am2digital.github.io/VISITEAm2tech/\nADR:;;Paris;;;;France\nORG:AM2TECH\nNOTE:Passionné par l'innovation numérique\nEND:VCARD`;
+          const vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:Am2tech;;;;\nFN:Am2tech\nTITLE:Consultant Digital\nTEL;TYPE=CELL:0652805105\nEMAIL:contact@am2tech.fr.\nURL:https://sante.am2tech.fr/\nADR:;;Paris;;;;France\nORG:AM2TECH\nNOTE:Passionné par l'innovation numérique\nEND:VCARD`;
           const blob = new Blob([vCardData], { type: 'text/vcard' });
           const url = URL.createObjectURL(blob);
     
